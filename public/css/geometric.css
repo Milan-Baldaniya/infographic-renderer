@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════════════
+   GEOMETRIC — Warm professional theme
+   ═══════════════════════════════════════════════ */
+.layout-geometric {
+  background: #FFFBF5;
+}
+
+.layout-geometric .title {
+  color: #1F2937;
+}
+
+.layout-geometric .subtitle {
+  color: #6B7280;
+}
+
+.layout-geometric .connector-arrow {
+  color: #D1D5DB;
+}
+
+.layout-geometric .card {
+  background: #FFFFFF;
+  border: 2px solid #2a3e5c;
+}
+
+.layout-geometric .card-points li {
+  color: #4B5563;
+}
+
+.layout-geometric .card-points li::before {
+  background: #DC2626;
+}

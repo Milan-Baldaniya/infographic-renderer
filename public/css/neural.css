@@ -1,0 +1,35 @@
+/* ═══════════════════════════════════════════════
+   NEURAL — Dark professional theme
+   ═══════════════════════════════════════════════ */
+.layout-neural {
+  background: #0F172A;
+}
+
+.layout-neural .brand-name {
+  color: #94A3B8;
+}
+
+.layout-neural .title {
+  color: #F1F5F9;
+}
+
+.layout-neural .subtitle {
+  color: #94A3B8;
+}
+
+.layout-neural .connector-arrow {
+  color: #475569;
+}
+
+.layout-neural .card {
+  background: #1E293B;
+  border: 2px solid #2a3e5c;
+}
+
+.layout-neural .card-points li {
+  color: #CBD5E1;
+}
+
+.layout-neural .card-points li::before {
+  background: #8B5CF6;
+}

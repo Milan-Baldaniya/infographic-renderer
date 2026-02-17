@@ -1,0 +1,31 @@
+/* ═══════════════════════════════════════════════
+   MINDMAP — Light professional theme
+   ═══════════════════════════════════════════════ */
+.layout-mindmap {
+  background: #F8FAFC;
+}
+
+.layout-mindmap .title {
+  color: #1E293B;
+}
+
+.layout-mindmap .subtitle {
+  color: #64748B;
+}
+
+.layout-mindmap .connector-arrow {
+  color: #94A3B8;
+}
+
+.layout-mindmap .card {
+  background: #FFFFFF;
+  border: 2px solid #2a3e5c;
+}
+
+.layout-mindmap .card-points li {
+  color: #475569;
+}
+
+.layout-mindmap .card-points li::before {
+  background: #3B82F6;
+}
