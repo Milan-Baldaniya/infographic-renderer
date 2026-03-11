@@ -82,7 +82,13 @@ app.post("/render", async (req, res) => {
     const host = req.headers['x-forwarded-host'] || req.get('host');
     const imageUrl = `${protocol}://${host}/images/${filename}`;
 
-    res.status(200).json({ image_url: imageUrl });
+    // Provide both the URL and the image (as base64 text) in the JSON response
+    const imageBase64 = buffer.toString('base64');
+
+    res.status(200).json({ 
+      image_url: imageUrl,
+      image_base64: `data:image/png;base64,${imageBase64}`
+    });
   } catch (error) {
     console.error("Error generating image:", error);
     res.status(500).send("Error generating image");
