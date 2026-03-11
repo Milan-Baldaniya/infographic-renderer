@@ -18,6 +18,12 @@ if (isProduction) {
 const app = express();
 app.use(express.text({ type: "*/*", limit: "5mb" }));
 
+const imagesDir = isProduction ? path.join('/tmp', 'images') : path.join(process.cwd(), 'public', 'images');
+if (!fs.existsSync(imagesDir)) {
+  fs.mkdirSync(imagesDir, { recursive: true });
+}
+app.use('/images', express.static(imagesDir));
+
 // Read and base64-encode the logo for inline embedding
 const logoPath = path.join(process.cwd(), 'assets', 'logo.png'); // Use process.cwd() for Vercel
 let logoBase64 = '';
@@ -65,8 +71,18 @@ app.post("/render", async (req, res) => {
 
     const buffer = await page.screenshot({ type: "png" });
     await browser.close();
-    res.set("Content-Type", "image/png");
-    res.send(buffer);
+
+    const timestamp = Date.now();
+    const filename = `infographic-${timestamp}.png`;
+    const filepath = path.join(imagesDir, filename);
+    
+    fs.writeFileSync(filepath, buffer);
+
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol || 'http';
+    const host = req.headers['x-forwarded-host'] || req.get('host');
+    const imageUrl = `${protocol}://${host}/images/${filename}`;
+
+    res.status(200).json({ image_url: imageUrl });
   } catch (error) {
     console.error("Error generating image:", error);
     res.status(500).send("Error generating image");
